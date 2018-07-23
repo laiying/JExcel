@@ -89,6 +89,13 @@ public class MainApplication extends ApplicationWindow {
 	private Text outNs5aResultIndex;
 	private Text outNs5aDateIndex;
 	private Text dateFormatTxt;
+	private Text sourceNameIndex;
+	private Text geneIndex;
+	private Text geneDateIndex;
+	private Text outHcvIGGIndex;
+	private Text outHcvIGGDateIndex;
+	private Text outHcvRNAIndex;
+	private Text outHcvRNADateIndex;
 	/**
 	 * Create the application window.
 	 */
@@ -181,8 +188,15 @@ public class MainApplication extends ApplicationWindow {
 			outHcvDateIndex = new Text(container, SWT.BORDER);
 			outHcvDateIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		}
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+		{
+			Label label = new Label(container, SWT.NONE);
+			label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			label.setText("\u6570\u636E\u6E90\u5B9E\u9A8C\u9879\u76EE\u540D\u79F0\u7D22\u5F15:");
+		}
+		{
+			sourceNameIndex = new Text(container, SWT.BORDER);
+			sourceNameIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		}
 		{
 			Label lblNsa = new Label(container, SWT.NONE);
 			lblNsa.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -191,6 +205,17 @@ public class MainApplication extends ApplicationWindow {
 		{
 			outNs5aResultIndex = new Text(container, SWT.BORDER);
 			outNs5aResultIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		}
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		{
+			Label lblNsa_1 = new Label(container, SWT.NONE);
+			lblNsa_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			lblNsa_1.setText("NS5A\u65E5\u671F\u7D22\u5F15:");
+		}
+		{
+			outNs5aDateIndex = new Text(container, SWT.BORDER);
+			outNs5aDateIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		}
 		{
 			Label label = new Label(container, SWT.NONE);
@@ -203,26 +228,13 @@ public class MainApplication extends ApplicationWindow {
 			dateFormatTxt.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		}
 		{
-			Label lblNsa_1 = new Label(container, SWT.NONE);
-			lblNsa_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-			lblNsa_1.setText("NS5A\u65E5\u671F\u7D22\u5F15:");
+			Label lblNewLabel = new Label(container, SWT.NONE);
+			lblNewLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			lblNewLabel.setText("\u57FA\u56E0\u5B9A\u91CF\u7ED3\u679C\u7D22\u5F15:");
 		}
 		{
-			outNs5aDateIndex = new Text(container, SWT.BORDER);
-			outNs5aDateIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		}
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		{
-			Button saveSetting = new Button(container, SWT.NONE);
-			saveSetting.addSelectionListener(new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					saveConfig();
-				}
-			});
-			saveSetting.setText("\u4FDD\u5B58\u8BBE\u7F6E");
+			geneIndex = new Text(container, SWT.BORDER);
+			geneIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		}
 		{
 			Button openFileBtn = new Button(container, SWT.NONE);
@@ -260,6 +272,59 @@ public class MainApplication extends ApplicationWindow {
 		}
 		new Label(container, SWT.NONE);
 		{
+			Label label = new Label(container, SWT.NONE);
+			label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			label.setText("\u57FA\u56E0\u5B9A\u91CF\u65E5\u671F\u7D22\u5F15:");
+		}
+		{
+			geneDateIndex = new Text(container, SWT.BORDER);
+			geneDateIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		}
+		{
+			listWidgets = new List(container, SWT.BORDER | SWT.V_SCROLL);
+			GridData gridData = new GridData(GridData.VERTICAL_ALIGN_FILL);
+			gridData.widthHint = 284;
+			gridData.horizontalSpan = 2;
+			gridData.verticalSpan = 5;
+			listWidgets.setLayoutData(gridData);
+		}
+		{
+			Label lblNewLabel_1 = new Label(container, SWT.NONE);
+			lblNewLabel_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			lblNewLabel_1.setText("HCV-IgG\u7ED3\u679C\u7D22\u5F15:");
+		}
+		{
+			outHcvIGGIndex = new Text(container, SWT.BORDER);
+			outHcvIGGIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		}
+		{
+			Label lblNewLabel_2 = new Label(container, SWT.NONE);
+			lblNewLabel_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			lblNewLabel_2.setText("HCV-IgG\u65E5\u671F\u7D22\u5F15:");
+		}
+		{
+			outHcvIGGDateIndex = new Text(container, SWT.BORDER);
+			outHcvIGGDateIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		}
+		{
+			Label lblNewLabel_3 = new Label(container, SWT.NONE);
+			lblNewLabel_3.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			lblNewLabel_3.setText("HCV RNA\u7ED3\u679C\u7D22\u5F15");
+		}
+		{
+			outHcvRNAIndex = new Text(container, SWT.BORDER);
+			outHcvRNAIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		}
+		{
+			Label lblNewLabel_4 = new Label(container, SWT.NONE);
+			lblNewLabel_4.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+			lblNewLabel_4.setText("HCV RNA\u65E5\u671F\u7D22\u5F15");
+		}
+		{
+			outHcvRNADateIndex = new Text(container, SWT.BORDER);
+			outHcvRNADateIndex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		}
+		{
 			Button saveFileBtn = new Button(container, SWT.NONE);
 			saveFileBtn.addSelectionListener(new SelectionAdapter() {
 				@Override
@@ -274,6 +339,51 @@ public class MainApplication extends ApplicationWindow {
 
 			});
 			saveFileBtn.setText("请选择保存路径");
+		}
+		
+		HCVConfig hcvConfig = readConfig();
+		if(hcvConfig == null) {
+			hcvConfig = new HCVConfig();
+		}
+		
+		sourceSheetIndex.setText(String.valueOf(hcvConfig.getSourceSheetNum()));
+		outSheetIndex.setText(String.valueOf(hcvConfig.getOutSheetNum()));
+		sourceCodeIndex.setText(String.valueOf(hcvConfig.getSourceCodeNum()));
+		outCodeIndex.setText(String.valueOf(hcvConfig.getOutCodeNum()));
+		
+		sourceHcvResultIndex.setText(String.valueOf(hcvConfig.getSourceHcvResultNum()));
+		outHcvResultIndex.setText(String.valueOf(hcvConfig.getOutHcvResultNum()));
+		sourceHcvDateIndex.setText(String.valueOf(hcvConfig.getSourceHcvDateNum()));
+		outHcvDateIndex.setText(String.valueOf(hcvConfig.getOutHcvDateNum()));
+		
+		outNs5aResultIndex.setText(String.valueOf(hcvConfig.getOutNs5aResultNum()));
+		outNs5aDateIndex.setText(String.valueOf(hcvConfig.getOutNs5aDateNum()));
+		
+		geneIndex.setText(String.valueOf(hcvConfig.getGeneNum()));
+		geneDateIndex.setText(String.valueOf(hcvConfig.getGeneDateNum()));
+		
+		sourceNameIndex.setText(String.valueOf(hcvConfig.getSourceNameNum()));
+		
+		outHcvIGGIndex.setText(String.valueOf(hcvConfig.getIggNum()));
+		outHcvIGGDateIndex.setText(String.valueOf(hcvConfig.getIggDateNum()));
+		
+		outHcvRNAIndex.setText(String.valueOf(hcvConfig.getHcvRNANum()));
+		outHcvRNADateIndex.setText(String.valueOf(hcvConfig.getHcvRNADateNum()));
+		{
+			Button saveSetting = new Button(container, SWT.NONE);
+			saveSetting.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					saveConfig();
+				}
+			});
+			saveSetting.setText("\u4FDD\u5B58\u8BBE\u7F6E");
+		}
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		{
+			savePathTxt = new Text(container, SWT.BORDER | SWT.WRAP);
+			savePathTxt.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		}
 		{
 			Button startBtn = new Button(container, SWT.NONE);
@@ -297,6 +407,16 @@ public class MainApplication extends ApplicationWindow {
 						
 						int outNs5aResultNum = Integer.parseInt(outNs5aResultIndex.getText());
 						int outNs5aDateNum = Integer.parseInt(outNs5aDateIndex.getText());
+						int sourceNameNum = Integer.parseInt(sourceNameIndex.getText());
+						
+						int geneNum = Integer.parseInt(geneIndex.getText());
+						int geneDateNum = Integer.parseInt(geneDateIndex.getText());
+						
+						int iggNum = Integer.parseInt(outHcvIGGIndex.getText());
+						int iggDateNum = Integer.parseInt(outHcvIGGDateIndex.getText());
+						
+						int hcvRNANum = Integer.parseInt(outHcvRNAIndex.getText());
+						int hcvRNADateNum = Integer.parseInt(outHcvRNADateIndex.getText());
 						
 						String dateFormat = dateFormatTxt.getText().trim();
 						
@@ -314,7 +434,18 @@ public class MainApplication extends ApplicationWindow {
 						config.setOutNs5aResultNum(outNs5aResultNum);
 						config.setOutNs5aDateNum(outNs5aDateNum);
 						
+						config.setSourceNameNum(sourceNameNum);
+						
 						config.setDateFormat(dateFormat);
+						
+						config.setGeneNum(geneNum);
+						config.setGeneDateNum(geneDateNum);
+						
+						config.setIggNum(iggNum);
+						config.setIggDateNum(iggDateNum);
+						
+						config.setHcvRNANum(hcvRNANum);
+						config.setHcvRNADateNum(hcvRNADateNum);
 						
 				          new ProgressMonitorDialog(getShell()).run(true, true,
 				              new OptRunning(config));
@@ -337,45 +468,6 @@ public class MainApplication extends ApplicationWindow {
 			});
 			startBtn.setText("\u5F00\u59CB\u8F6C\u6362");
 		}
-		{
-			listWidgets = new List(container, SWT.BORDER | SWT.V_SCROLL);
-			GridData gridData = new GridData(GridData.VERTICAL_ALIGN_FILL);
-			gridData.widthHint = 284;
-			gridData.horizontalSpan = 2;
-			gridData.verticalSpan = 5;
-			listWidgets.setLayoutData(gridData);
-		}
-		{
-			savePathTxt = new Text(container, SWT.BORDER | SWT.WRAP);
-			savePathTxt.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		}
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		
-		HCVConfig hcvConfig = readConfig();
-		if(hcvConfig == null) {
-			hcvConfig = new HCVConfig();
-		}
-		
-		sourceSheetIndex.setText(String.valueOf(hcvConfig.getSourceSheetNum()));
-		outSheetIndex.setText(String.valueOf(hcvConfig.getOutSheetNum()));
-		sourceCodeIndex.setText(String.valueOf(hcvConfig.getSourceCodeNum()));
-		outCodeIndex.setText(String.valueOf(hcvConfig.getOutCodeNum()));
-		
-		sourceHcvResultIndex.setText(String.valueOf(hcvConfig.getSourceHcvResultNum()));
-		outHcvResultIndex.setText(String.valueOf(hcvConfig.getOutHcvResultNum()));
-		sourceHcvDateIndex.setText(String.valueOf(hcvConfig.getSourceHcvDateNum()));
-		outHcvDateIndex.setText(String.valueOf(hcvConfig.getOutHcvDateNum()));
-		
-		outNs5aResultIndex.setText(String.valueOf(hcvConfig.getOutNs5aResultNum()));
-		outNs5aDateIndex.setText(String.valueOf(hcvConfig.getOutNs5aDateNum()));
 		
 		if(null != hcvConfig.getSourceFilePath()) {
 			listWidgets.add(hcvConfig.getSourceFilePath());
@@ -517,6 +609,17 @@ public class MainApplication extends ApplicationWindow {
 			int outNs5aResultNum = config.getOutNs5aResultNum();
 			int outNs5aDateNum = config.getOutNs5aDateNum();
 			
+			int sourceNameNum = config.getSourceNameNum();
+			
+			int geneNum = config.getGeneNum();
+			int geneDateNum = config.getGeneDateNum();
+			
+			int iggNum = config.getIggNum();
+			int iggDateNum = config.getIggDateNum();
+			
+			int hcvRNANum = config.getHcvRNANum();
+			int hcvRNADateNum = config.getHcvRNADateNum();
+			
 			String dateFormat = config.getDateFormat();
 			
 			XSSFWorkbook sourceWorkbook = new XSSFWorkbook(sourceFile);
@@ -536,6 +639,15 @@ public class MainApplication extends ApplicationWindow {
 			CreationHelper createHelper = outWorkbook.getCreationHelper();
 			dateStyle.setDataFormat(createHelper.createDataFormat().getFormat(dateFormat));
 			
+			XSSFCellStyle numStyle = outWorkbook.createCellStyle();
+			numStyle.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+			numStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			numStyle.setBorderBottom(BorderStyle.THIN);
+			numStyle.setBorderRight(BorderStyle.THIN);
+			numStyle.setAlignment(HorizontalAlignment.CENTER);
+			numStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+			numStyle.setDataFormat(outWorkbook.getCreationHelper().createDataFormat().getFormat("0.00E+00"));
+			
 			XSSFCellStyle centerStyle = outWorkbook.createCellStyle();
 			centerStyle.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
 			centerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
@@ -543,6 +655,8 @@ public class MainApplication extends ApplicationWindow {
 			centerStyle.setBorderRight(BorderStyle.THIN);
 			centerStyle.setAlignment(HorizontalAlignment.CENTER);
 			centerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+			
+			
 
 			Map<String,String> unHCVResultMap = new HashMap<>();
 
@@ -552,19 +666,26 @@ public class MainApplication extends ApplicationWindow {
 					XSSFRow row = sourceSheet.getRow(i);
 
 					if (row != null) {
+						if(row.getCell(sourceCodeNum) == null) {
+							continue;
+						}
 						String barCode = row.getCell(sourceCodeNum).toString();
-
+						String name = row.getCell(sourceNameNum).toString();
+						String result = row.getCell(sourceHcvResultNum).toString();
+						String date = row.getCell(sourceHcvDateNum).toString();
+						
 						for (int j = 1; j <= outSheet.getLastRowNum(); j++) {
 							if (null != outSheet.getRow(j)) {
 								// one row
 								XSSFRow outRow = outSheet.getRow(j);
-
+								
+								if(outRow.getCell(outCodeNum) == null) {
+									continue;
+								}
 								String outBarCode = outRow.getCell(outCodeNum).toString();
 								if (barCode.equals(outBarCode)) {
-									String result = row.getCell(sourceHcvResultNum).toString();
-									String date = row.getCell(sourceHcvDateNum).toString();
-									
-									if (result.startsWith("HCV")) {
+									//HCV基因分型实验
+									if(name.startsWith("HCV基因分型")) {
 										if(outRow.getCell(outHcvResultNum) == null) {
 											outRow.createCell(outHcvResultNum);
 										}
@@ -577,10 +698,49 @@ public class MainApplication extends ApplicationWindow {
 										}
 										outRow.getCell(outHcvDateNum).setCellValue(DateUtils.formatDateString(date, "yyyy-MM-dd HH:mm:ss"));
 										outRow.getCell(outHcvDateNum).setCellStyle(dateStyle);
+									}else if(name.contains("HCV-RNA")){//丙型肝炎病毒
+										if(outRow.getCell(geneNum) == null) {
+											outRow.createCell(geneNum);
+										}
+										outRow.getCell(geneNum).setCellValue(result);
+										outRow.getCell(geneNum).setCellStyle(centerStyle);
 										
+										if(outRow.getCell(geneDateNum) == null) {
+											outRow.createCell(geneDateNum);
+										}
+										outRow.getCell(geneDateNum).setCellValue(DateUtils.formatDateString(date, "yyyy-MM-dd HH:mm:ss"));
+										outRow.getCell(geneDateNum).setCellStyle(dateStyle);
+									}else if(name.contains("抗体IgG")){
+										if(outRow.getCell(iggNum) == null) {
+											outRow.createCell(iggNum);
+										}
+										outRow.getCell(iggNum).setCellValue(result);
+										outRow.getCell(iggNum).setCellStyle(numStyle);
 										
-									}else {
+										if(outRow.getCell(iggDateNum) == null) {
+											outRow.createCell(iggDateNum);
+										}
+										outRow.getCell(iggDateNum).setCellValue(DateUtils.formatDateString(date, "yyyy-MM-dd HH:mm:ss"));
+										outRow.getCell(iggDateNum).setCellStyle(dateStyle);
+									}else if(name.contains("高灵敏HCV RNA检测")){
+										if(outRow.getCell(hcvRNANum) == null) {
+											outRow.createCell(hcvRNANum);
+										}
+										outRow.getCell(hcvRNANum).setCellValue(result);
+										outRow.getCell(hcvRNANum).setCellStyle(centerStyle);
+										
+										if(outRow.getCell(hcvRNADateNum) == null) {
+											outRow.createCell(hcvRNADateNum);
+										}
+										outRow.getCell(hcvRNADateNum).setCellValue(DateUtils.formatDateString(date, "yyyy-MM-dd HH:mm:ss"));
+										outRow.getCell(hcvRNADateNum).setCellStyle(dateStyle);
+									}
+									else {
 										if(result.startsWith("非1b")) {
+											result = "非1b";
+										}
+										
+										if(result.startsWith("非1b") || result.startsWith("病毒含量低于检测下限")) {
 											if(outRow.getCell(outNs5aResultNum) == null) {
 												outRow.createCell(outNs5aResultNum);
 											}
@@ -613,8 +773,8 @@ public class MainApplication extends ApplicationWindow {
 											
 											unHCVResultMap.put(barCode, result);
 										}
-										
 									}
+									
 
 								}
 							}
@@ -672,6 +832,15 @@ public class MainApplication extends ApplicationWindow {
 		
 		int outNs5aResultNum = 9;
 		int outNs5aDateNum = 10;
+		
+		int sourceNameNum = 4;
+		
+		int geneNum = 13;
+		int geneDateNum = 14;
+		
+		int hcvRNANum = 15;
+		int hcvRNADateNum = 16;
+		
 		String dateFormat = "yyyy/M/d";
 		try {
 			sourceSheetNum = Integer.parseInt(sourceSheetIndex.getText());
@@ -685,6 +854,14 @@ public class MainApplication extends ApplicationWindow {
 			
 			outNs5aResultNum = Integer.parseInt(outNs5aResultIndex.getText());
 			outNs5aDateNum = Integer.parseInt(outNs5aDateIndex.getText());
+			
+			sourceNameNum = Integer.parseInt(sourceNameIndex.getText());
+			
+			geneNum = Integer.parseInt(geneIndex.getText());
+			geneDateNum = Integer.parseInt(geneDateIndex.getText());
+			
+			hcvRNANum = Integer.parseInt(outHcvRNAIndex.getText());
+			hcvRNADateNum = Integer.parseInt(outHcvRNADateIndex.getText());
 			
 			dateFormat = dateFormatTxt.getText().trim();
 		}catch (Exception e) {
@@ -704,6 +881,14 @@ public class MainApplication extends ApplicationWindow {
 		
 		config.setOutNs5aResultNum(outNs5aResultNum);
 		config.setOutNs5aDateNum(outNs5aDateNum);
+		
+		config.setSourceNameNum(sourceNameNum);
+		
+		config.setGeneNum(geneNum);
+		config.setGeneDateNum(geneDateNum);
+		
+		config.setHcvRNANum(hcvRNANum);
+		config.setHcvRNADateNum(hcvRNADateNum);
 		
 		String saveFilePath = savePathTxt.getText().trim();
 		config.setSaveFilePath(saveFilePath);

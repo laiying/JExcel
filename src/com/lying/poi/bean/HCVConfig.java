@@ -14,6 +14,17 @@ public class HCVConfig {
 	private int outNs5aResultNum = 9;
 	private int outNs5aDateNum = 10;
 	
+	private int sourceNameNum = 4;
+	
+	private int geneNum = 13;
+	private int geneDateNum = 14;
+	
+	private int iggNum = 15;
+	private int iggDateNum = 16;
+	
+	private int hcvRNANum = 17;
+	private int hcvRNADateNum = 18;
+	
 	private String sourceFilePath;
 	private String outFilePath;
 	private String saveFilePath;
@@ -100,11 +111,58 @@ public class HCVConfig {
 	}
 	
 	
+	public int getSourceNameNum() {
+		return sourceNameNum;
+	}
+	public void setSourceNameNum(int sourceNameNum) {
+		this.sourceNameNum = sourceNameNum;
+	}
 	public String getDateFormat() {
 		return dateFormat;
 	}
 	public void setDateFormat(String dateFormat) {
 		this.dateFormat = dateFormat;
+	}
+	
+	public int getGeneNum() {
+		return geneNum;
+	}
+	public void setGeneNum(int geneNum) {
+		this.geneNum = geneNum;
+	}
+	public int getGeneDateNum() {
+		return geneDateNum;
+	}
+	public void setGeneDateNum(int geneDateNum) {
+		this.geneDateNum = geneDateNum;
+	}
+	
+	
+	public int getIggNum() {
+		return iggNum;
+	}
+	public void setIggNum(int iggNum) {
+		this.iggNum = iggNum;
+	}
+	public int getIggDateNum() {
+		return iggDateNum;
+	}
+	public void setIggDateNum(int iggDateNum) {
+		this.iggDateNum = iggDateNum;
+	}
+	
+	
+	public int getHcvRNANum() {
+		return hcvRNANum;
+	}
+	public void setHcvRNANum(int hcvRNANum) {
+		this.hcvRNANum = hcvRNANum;
+	}
+	public int getHcvRNADateNum() {
+		return hcvRNADateNum;
+	}
+	public void setHcvRNADateNum(int hcvRNADateNum) {
+		this.hcvRNADateNum = hcvRNADateNum;
 	}
 	@Override
 	public String toString() {
